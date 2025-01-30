@@ -3,6 +3,7 @@ using BackendAPITemplate.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using BackendAPITemplate.Data;
+using System.Text.Json.Serialization;
 
 namespace BackendAPITemplate
 {
@@ -16,7 +17,12 @@ namespace BackendAPITemplate
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                options.JsonSerializerOptions.WriteIndented = true;
+            });
+
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
