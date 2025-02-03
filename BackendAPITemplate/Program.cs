@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using BackendAPITemplate.Data;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Identity;
+using BackendAPITemplate.Areas.Identity.Data;
 
 namespace BackendAPITemplate
 {
@@ -14,6 +16,8 @@ namespace BackendAPITemplate
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<BackendAPITemplateContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("BackendAPITemplateContext") ?? throw new InvalidOperationException("Connection string 'BackendAPITemplateContext' not found.")));
+
+            builder.Services.AddDefaultIdentity<BlogUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<BackendAPITemplateIndent>();
 
             // Add services to the container.
 
