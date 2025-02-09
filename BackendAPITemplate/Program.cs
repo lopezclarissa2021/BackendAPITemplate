@@ -14,10 +14,12 @@ namespace BackendAPITemplate
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            // link up the database
             builder.Services.AddDbContext<BackendAPITemplateContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("BackendAPITemplateContext") ?? throw new InvalidOperationException("Connection string 'BackendAPITemplateContext' not found.")));
 
-            builder.Services.AddDefaultIdentity<BlogUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<BackendAPITemplateIndent>();
+            // link up the identity and links it to the database
+            builder.Services.AddDefaultIdentity<BlogUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<BackendAPITemplateContext>();
 
             // Add services to the container.
 
@@ -44,17 +46,7 @@ namespace BackendAPITemplate
 
 
             app.MapControllers();
-
-            DynamicContent test = new DynamicContent
-            {
-                Id = 1,
-                Title = "Sample Content title",
-                Body = "This is a sample body.",
-                CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now,
-                CreatedBy = "Admin",
-                Visibility = VisibilityStatus.Visible
-            };
+            app.MapRazorPages();
 
             app.Run();
         }

@@ -4,10 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using BackendAPITemplate.Models;
+using BackendAPITemplate.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace BackendAPITemplate.Data
 {
-    public class BackendAPITemplateContext : DbContext
+    public class BackendAPITemplateContext : IdentityDbContext<BlogUser>
     {
         public BackendAPITemplateContext (DbContextOptions<BackendAPITemplateContext> options)
             : base(options)
@@ -23,6 +26,7 @@ namespace BackendAPITemplate.Data
             base.OnModelCreating(modelBuilder);
 
             // add seed data
+
             modelBuilder.Entity<Category>().HasData(
                 new Category
                 {
@@ -40,25 +44,27 @@ namespace BackendAPITemplate.Data
 
 
             modelBuilder.Entity<DynamicContent>().HasData(
-                new DynamicContent { 
-                    Id = 1, 
-                    Title = "My first post", 
-                    Body = "This is my first post", 
-                    CreatedAt = DateTime.Now, 
-                    UpdatedAt = DateTime.Now, 
-                    CreatedBy = "Clarissa", 
-                    CategoryId = 1, 
-                    Visibility = VisibilityStatus.Visible 
+                new DynamicContent
+                {
+                    Id = 1,
+                    Title = "My first post",
+                    Body = "This is my first post",
+                    CreatedAt = new DateTime(2025, 02, 03),
+                    UpdatedAt = new DateTime(2025, 02, 03),
+                    CreatedById = "b53f4921-e2e6-48d1-9e98-d9eec7320041",
+                    CategoryId = 1,
+                    Visibility = VisibilityStatus.Visible
                 },
-                new DynamicContent { 
-                    Id = 2, 
-                    Title = "My second post", 
-                    Body = "This is my second post", 
-                    CreatedAt = DateTime.Now, 
-                    UpdatedAt = DateTime.Now, 
-                    CreatedBy = "Clarissa", 
-                    CategoryId = 2, 
-                    Visibility = VisibilityStatus.Visible 
+                new DynamicContent
+                {
+                    Id = 2,
+                    Title = "My second post",
+                    Body = "This is my second post",
+                    CreatedAt = new DateTime(2025, 02, 03),
+                    UpdatedAt = new DateTime(2025, 02, 03),
+                    CreatedById = "b53f4921-e2e6-48d1-9e98-d9eec7320041",
+                    CategoryId = 2,
+                    Visibility = VisibilityStatus.Visible
                 }
             );
 

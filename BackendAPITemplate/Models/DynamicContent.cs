@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using BackendAPITemplate.Areas.Identity.Data;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BackendAPITemplate.Models
 {
@@ -9,10 +10,12 @@ namespace BackendAPITemplate.Models
         public string Body { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        public string CreatedBy { get; set; }
+        public string CreatedById { get; set; }
         public int CategoryId { get; set; }
 
         public virtual Category? Category { get; set; }
+
+        public virtual BlogUser CreatedBy { get; set; }
         public VisibilityStatus Visibility { get; set; }
 
     }

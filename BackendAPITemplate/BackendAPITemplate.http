@@ -1,6 +1,6 @@
 @BackendAPITemplate_HostAddress = http://localhost:5290
 
-GET {{BackendAPITemplate_HostAddress}}/weatherforecast/
+GET {{BackendAPITemplate_HostAddress}}/api/DynamicContents
 Accept: application/json
 
 ###

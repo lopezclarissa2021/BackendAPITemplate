@@ -4,6 +4,7 @@ using BackendAPITemplate.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendAPITemplate.Migrations
 {
     [DbContext(typeof(BackendAPITemplateContext))]
-    partial class BackendAPITemplateContextModelSnapshot : ModelSnapshot
+    [Migration("20250205181932_FixDateTimeError")]
+    partial class FixDateTimeError
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,7 +104,7 @@ namespace BackendAPITemplate.Migrations
 
                     b.HasKey("CatergoryId");
 
-                    b.ToTable("Category", (string)null);
+                    b.ToTable("Category");
 
                     b.HasData(
                         new
@@ -152,7 +155,7 @@ namespace BackendAPITemplate.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("DynamicContent", (string)null);
+                    b.ToTable("DynamicContent");
 
                     b.HasData(
                         new

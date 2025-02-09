@@ -4,6 +4,7 @@ using BackendAPITemplate.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendAPITemplate.Migrations
 {
     [DbContext(typeof(BackendAPITemplateContext))]
-    partial class BackendAPITemplateContextModelSnapshot : ModelSnapshot
+    [Migration("20250205175828_InitialIdentity")]
+    partial class InitialIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,7 +104,7 @@ namespace BackendAPITemplate.Migrations
 
                     b.HasKey("CatergoryId");
 
-                    b.ToTable("Category", (string)null);
+                    b.ToTable("Category");
 
                     b.HasData(
                         new
@@ -152,7 +155,7 @@ namespace BackendAPITemplate.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("DynamicContent", (string)null);
+                    b.ToTable("DynamicContent");
 
                     b.HasData(
                         new
@@ -160,10 +163,10 @@ namespace BackendAPITemplate.Migrations
                             Id = 1,
                             Body = "This is my first post",
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2025, 2, 5, 9, 58, 27, 670, DateTimeKind.Local).AddTicks(8607),
                             CreatedBy = "Clarissa",
                             Title = "My first post",
-                            UpdatedAt = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UpdatedAt = new DateTime(2025, 2, 5, 9, 58, 27, 673, DateTimeKind.Local).AddTicks(4352),
                             Visibility = 0
                         },
                         new
@@ -171,10 +174,10 @@ namespace BackendAPITemplate.Migrations
                             Id = 2,
                             Body = "This is my second post",
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2025, 2, 5, 9, 58, 27, 673, DateTimeKind.Local).AddTicks(5438),
                             CreatedBy = "Clarissa",
                             Title = "My second post",
-                            UpdatedAt = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UpdatedAt = new DateTime(2025, 2, 5, 9, 58, 27, 673, DateTimeKind.Local).AddTicks(5448),
                             Visibility = 0
                         });
                 });
