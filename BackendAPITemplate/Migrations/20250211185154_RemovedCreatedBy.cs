@@ -8,11 +8,15 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BackendAPITemplate.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialIdentity : Migration
+    public partial class RemovedCreatedBy : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropColumn(
+                name: "CreatedBy",
+                table: "DynamicContent");
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -169,11 +173,11 @@ namespace BackendAPITemplate.Migrations
 
             migrationBuilder.InsertData(
                 table: "DynamicContent",
-                columns: new[] { "Id", "Body", "CategoryId", "CreatedAt", "CreatedBy", "Title", "UpdatedAt", "Visibility" },
+                columns: new[] { "Id", "Body", "CategoryId", "CreatedAt", "Title", "UpdatedAt", "Visibility" },
                 values: new object[,]
                 {
-                    { 1, "This is my first post", 1, new DateTime(2025, 2, 5, 9, 58, 27, 670, DateTimeKind.Local).AddTicks(8607), "Clarissa", "My first post", new DateTime(2025, 2, 5, 9, 58, 27, 673, DateTimeKind.Local).AddTicks(4352), 0 },
-                    { 2, "This is my second post", 2, new DateTime(2025, 2, 5, 9, 58, 27, 673, DateTimeKind.Local).AddTicks(5438), "Clarissa", "My second post", new DateTime(2025, 2, 5, 9, 58, 27, 673, DateTimeKind.Local).AddTicks(5448), 0 }
+                    { 1, "This is my first post", 1, new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "My first post", new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
+                    { 2, "This is my second post", 2, new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "My second post", new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -259,6 +263,13 @@ namespace BackendAPITemplate.Migrations
                 table: "Category",
                 keyColumn: "CatergoryId",
                 keyValue: 2);
+
+            migrationBuilder.AddColumn<string>(
+                name: "CreatedBy",
+                table: "DynamicContent",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
         }
     }
 }

@@ -10,6 +10,6 @@ namespace BackendAPITemplate.Areas.Identity.Data;
 // Add profile data for application users by adding properties to the BlogUser class
 public class BlogUser : IdentityUser
 {
-    public virtual ICollection<DynamicContent> Posts { get; set; }
+    //public virtual ICollection<DynamicContent> Posts { get; set; }
 }
 

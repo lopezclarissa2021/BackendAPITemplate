@@ -101,7 +101,7 @@ namespace BackendAPITemplate.Migrations
 
                     b.HasKey("CatergoryId");
 
-                    b.ToTable("Category", (string)null);
+                    b.ToTable("Category");
 
                     b.HasData(
                         new
@@ -134,10 +134,6 @@ namespace BackendAPITemplate.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -152,7 +148,7 @@ namespace BackendAPITemplate.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("DynamicContent", (string)null);
+                    b.ToTable("DynamicContent");
 
                     b.HasData(
                         new
@@ -161,7 +157,6 @@ namespace BackendAPITemplate.Migrations
                             Body = "This is my first post",
                             CategoryId = 1,
                             CreatedAt = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedBy = "Clarissa",
                             Title = "My first post",
                             UpdatedAt = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Visibility = 0
@@ -172,7 +167,6 @@ namespace BackendAPITemplate.Migrations
                             Body = "This is my second post",
                             CategoryId = 2,
                             CreatedAt = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedBy = "Clarissa",
                             Title = "My second post",
                             UpdatedAt = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Visibility = 0

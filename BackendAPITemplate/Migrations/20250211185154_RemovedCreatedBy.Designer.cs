@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendAPITemplate.Migrations
 {
     [DbContext(typeof(BackendAPITemplateContext))]
-    [Migration("20250205175828_InitialIdentity")]
-    partial class InitialIdentity
+    [Migration("20250211185154_RemovedCreatedBy")]
+    partial class RemovedCreatedBy
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -137,10 +137,6 @@ namespace BackendAPITemplate.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -163,10 +159,9 @@ namespace BackendAPITemplate.Migrations
                             Id = 1,
                             Body = "This is my first post",
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2025, 2, 5, 9, 58, 27, 670, DateTimeKind.Local).AddTicks(8607),
-                            CreatedBy = "Clarissa",
+                            CreatedAt = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "My first post",
-                            UpdatedAt = new DateTime(2025, 2, 5, 9, 58, 27, 673, DateTimeKind.Local).AddTicks(4352),
+                            UpdatedAt = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Visibility = 0
                         },
                         new
@@ -174,10 +169,9 @@ namespace BackendAPITemplate.Migrations
                             Id = 2,
                             Body = "This is my second post",
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2025, 2, 5, 9, 58, 27, 673, DateTimeKind.Local).AddTicks(5438),
-                            CreatedBy = "Clarissa",
+                            CreatedAt = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "My second post",
-                            UpdatedAt = new DateTime(2025, 2, 5, 9, 58, 27, 673, DateTimeKind.Local).AddTicks(5448),
+                            UpdatedAt = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Visibility = 0
                         });
                 });

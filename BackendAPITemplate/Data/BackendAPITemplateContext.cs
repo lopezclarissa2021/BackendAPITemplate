@@ -51,7 +51,6 @@ namespace BackendAPITemplate.Data
                     Body = "This is my first post",
                     CreatedAt = new DateTime(2025, 02, 03),
                     UpdatedAt = new DateTime(2025, 02, 03),
-                    CreatedById = "b53f4921-e2e6-48d1-9e98-d9eec7320041",
                     CategoryId = 1,
                     Visibility = VisibilityStatus.Visible
                 },
@@ -62,7 +61,6 @@ namespace BackendAPITemplate.Data
                     Body = "This is my second post",
                     CreatedAt = new DateTime(2025, 02, 03),
                     UpdatedAt = new DateTime(2025, 02, 03),
-                    CreatedById = "b53f4921-e2e6-48d1-9e98-d9eec7320041",
                     CategoryId = 2,
                     Visibility = VisibilityStatus.Visible
                 }
